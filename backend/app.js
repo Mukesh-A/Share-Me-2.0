@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRouter from "./router/user-routes";
+import postRouter from "./router/post-route";
 
 const app = express();
 dotenv.config();
@@ -10,7 +11,8 @@ dotenv.config();
 //express.json()
 //telling the application that we are passing json type data
 app.use(express.json());
-app.use("/", userRouter);
+app.use("/users", userRouter);
+app.use("/posts", postRouter);
 
 //connections to mongoo
 mongoose
