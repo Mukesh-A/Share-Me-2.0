@@ -1,4 +1,4 @@
-import { model, Schema } from "mongoose";
+import mongoose, { model, Schema } from "mongoose";
 
 const userSchema = new Schema({
   name: {
@@ -17,7 +17,9 @@ const userSchema = new Schema({
   },
   posts: [
     {
-      type: String,
+      //this is post array which a user can have multiple post which is refering to the Post
+      type: mongoose.Types.ObjectId,
+      ref: "Post",
     },
   ],
 });

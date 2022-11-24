@@ -1,4 +1,7 @@
+import e from "express";
+import mongoose from "mongoose";
 import Post from "../models/Post";
+import User from "../models/User";
 
 export const getAllPosts = async (req, res) => {
   let posts;
@@ -30,6 +33,16 @@ export const addPost = async (req, res) => {
     //422 means unprocessible data
     return res.status(422).json({ message: "Invalid Data" });
   }
+  let existingUser;
+  try {
+    existingUser = await User.findById(user);
+  } catch (error) {
+    return console.log(err);
+  }
+
+  if (!existingUser) {
+    return res.status(404).json({ message: "User not found" });
+  }
 
   let post;
   try {
@@ -41,7 +54,16 @@ export const addPost = async (req, res) => {
       date: new Date(`${date}`),
       user,
     });
+
+    //storing the post ui in users
+    //so creating a sessison
+    const session = await mongoose.startSession();
+    session.startTransaction();
+    existingUser.posts.push(post);
+    await existingUser.save({ session });
     post = await post.save();
+    console.log(session);
+    session.commitTransaction();
   } catch (error) {
     console.log(error);
   }
@@ -101,4 +123,27 @@ export const updatePost = async (req, res) => {
     return res.status(500).json({ message: "Unexpected error occured" });
   }
   return res.status(201).json({ message: "updated success", post });
+};
+export const deleteUser = async (req, res, next) => {
+  const id = req.params.id;
+  let post;
+  try {
+    //session to delete post id from the user postlist
+    const session = await mongoose.startSession();
+    session.startTransaction();
+    post = await Post.findById(id).populate("user");
+    console.log(post);
+    post.user.posts.pull(post);
+    await post.user.save({ session });
+    console.log(post);
+
+    post = await Post.findByIdAndDelete(id);
+    session.commitTransaction();
+  } catch (error) {
+    console.log(error);
+  }
+  if (!post) {
+    return res.status(500).json({ message: "Unable to delete" });
+  }
+  return res.status(200).json({ message: "Deleted Successfully" });
 };

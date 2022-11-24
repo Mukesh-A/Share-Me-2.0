@@ -22,7 +22,9 @@ const postSchema = new mongoose.Schema({
     required: true,
   },
   user: {
-    type: String,
+    //user can have one id which is refering to the User
+    type: mongoose.Types.ObjectId,
+    ref: "User",
     required: true,
   },
 });
