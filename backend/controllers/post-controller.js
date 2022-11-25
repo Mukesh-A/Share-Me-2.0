@@ -55,7 +55,7 @@ export const addPost = async (req, res) => {
       user,
     });
 
-    //storing the post ui in users
+    //storing the post id in users
     //so creating a sessison
     const session = await mongoose.startSession();
     session.startTransaction();
