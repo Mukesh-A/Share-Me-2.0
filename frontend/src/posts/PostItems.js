@@ -7,10 +7,14 @@ import {
   CardMedia,
   CardContent,
   Typography,
+  CardActions,
+  Button,
 } from "@mui/material";
-const PostItems = () => {
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+const PostItems = ({ post }) => {
   return (
-    <Card sx={{ maxWidth: 345, m:2 }}>
+    <Card sx={{ maxWidth: 345, m: 2 }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
@@ -22,8 +26,8 @@ const PostItems = () => {
             {/* <MoreVertIcon /> */}
           </IconButton>
         }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        title={post.location}
+        subheader={new Date(`${post.date}`).toLocaleDateString()}
       />
       <img
         height="194"
@@ -32,15 +36,28 @@ const PostItems = () => {
       />
       <CardContent>
         <Typography variant="h6" color="text.secondary">
-          This impressive paella
+          {post.title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          This impressive paella
+          {post.description}
+        </Typography>
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          textAlign={"end"}
+          fontStyle="italic"
+        >
+          ~{post.user}
         </Typography>
       </CardContent>
-      <Typography variant="body2" color="text.secondary" textAlign={"end"} fontStyle="italic">
-          This impressive paella
-        </Typography>
+      <CardActions sx={{ ml: "auto" }}>
+        <IconButton>
+          <EditIcon />
+        </IconButton>
+        <IconButton>
+          <DeleteIcon />
+        </IconButton>
+      </CardActions>
     </Card>
   );
 };
