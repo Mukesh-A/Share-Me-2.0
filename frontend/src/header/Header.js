@@ -4,7 +4,7 @@ import CenterFocusStrongIcon from "@mui/icons-material/CenterFocusStrong";
 import { Link } from "react-router-dom";
 const linkArray = ["home", "posts", "auth"];
 const Header = () => {
-  const [value, setValue] = useState();
+  const [value, setValue] = useState(0);
   return (
     //sx mean extra styling
     <AppBar sx={{ bgcolor: "#0A1929", position: "sticky" }}>
@@ -13,7 +13,10 @@ const Header = () => {
         {/* Tabs is parent element, Tab is childs */}
         <Tabs
           value={value}
-          onChange={(e, val) => setValue(val)}
+          onChange={(e, val) => {
+            setValue(val);
+            console.log(val);
+          }}
           sx={{ ml: "auto", textDecoration: "none" }}
         >
           {linkArray.map((link) => (
