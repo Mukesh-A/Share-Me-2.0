@@ -1,8 +1,12 @@
 import { Box, Button, FormLabel, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { sendAuthRequest } from "../api/helpers";
+import { authActions } from "../store";
 
 const Auth = () => {
+  const dispatch = useDispatch();
+
   const [isSignup, setIsSignup] = useState(true);
   const [inputs, setInputs] = useState({ name: "", email: "", password: "" });
   const handelChange = (e) => {
@@ -14,11 +18,17 @@ const Auth = () => {
     if (isSignup) {
       console.log("signup");
       sendAuthRequest(true, inputs)
-        .then((resData) => console.log(resData))
+        .then((resData) => localStorage.setItem("userId", resData.user._id))
+        .then(() => {
+          dispatch(authActions.login());
+        })
         .catch((err) => console.log(err));
     } else {
       sendAuthRequest(false, inputs)
-        .then((resData) => console.log(resData))
+        .then((resData) => localStorage.setItem("userId", resData.id))
+        .then(() => {
+          dispatch(authActions.login());
+        })
         .catch((err) => console.log(err));
     }
   };
@@ -80,7 +90,6 @@ const Auth = () => {
           </Button>
           <Button
             onClick={() => setIsSignup(!isSignup)}
-            type="submit"
             variant="outlined"
             sx={{ mt: 1, borderRadius: 5 }}
           >

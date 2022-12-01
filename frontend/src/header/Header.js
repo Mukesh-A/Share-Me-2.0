@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { AppBar, Tab, Tabs, Toolbar } from "@mui/material";
 import CenterFocusStrongIcon from "@mui/icons-material/CenterFocusStrong";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 const linkArray = ["home", "posts", "auth"];
+const loggedInLinks = ["home", "posts", "add", "profile"];
 const Header = () => {
+  const isLoggedIn = useSelector((state) => state.isLoggedIn);
   const [value, setValue] = useState(0);
   return (
     //sx mean extra styling
@@ -19,22 +22,31 @@ const Header = () => {
           }}
           sx={{ ml: "auto", textDecoration: "none" }}
         >
-          {linkArray.map((link) => (
-            <Tab
-              LinkComponent={Link}
-              to={`/${link === "home" ? "" : link}`}
-              sx={{
-                color: "#98A2AB",
-                textDecoration: "none",
-                // ":hover": {
-                //   textDecoration: "underline",
-                //   textUnderlineOffset: "5px",
-                // },
-              }}
-              key={link}
-              label={link}
-            />
-          ))}
+          {isLoggedIn
+            ? loggedInLinks.map((link) => (
+                <Tab
+                  LinkComponent={Link}
+                  to={`/${link === "home" ? "" : link}`}
+                  sx={{
+                    color: "#98A2AB",
+                    textDecoration: "none",
+                  }}
+                  key={link}
+                  label={link}
+                />
+              ))
+            : linkArray.map((link) => (
+                <Tab
+                  LinkComponent={Link}
+                  to={`/${link === "home" ? "" : link}`}
+                  sx={{
+                    color: "#98A2AB",
+                    textDecoration: "none",
+                  }}
+                  key={link}
+                  label={link}
+                />
+              ))}
         </Tabs>
       </Toolbar>
     </AppBar>
