@@ -1,5 +1,6 @@
 import { Box, Button, FormLabel, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
+import { addPost } from "../api/helpers";
 
 const Add = () => {
   const [inputs, setInputs] = useState({
@@ -12,6 +13,9 @@ const Add = () => {
   const handelSubmit = (e) => {
     e.preventDefault();
     console.log(inputs);
+    addPost(inputs)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
   const handelChange = (e) => {
     setInputs((prevstate) => ({
