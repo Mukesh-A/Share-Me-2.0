@@ -9,10 +9,21 @@ import {
   Typography,
   CardActions,
   Button,
+
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import {Link} from 'react-router-dom'
+const tempImage =
+  "https://images.unsplash.com/photo-1579762593175-20226054cad0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=936&q=80";
 const PostItems = ({ post }) => {
+  console.log(!post.image);
+  const isLoggedInUser = () => {
+    if (localStorage.getItem("userId") === post.user) {
+      return true;
+    }
+    return false;
+  };
   return (
     <Card sx={{ maxWidth: 345, m: 2 }}>
       <CardHeader
@@ -31,8 +42,11 @@ const PostItems = ({ post }) => {
       />
       <img
         height="194"
-        src="https://images.unsplash.com/photo-1579762593175-20226054cad0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=936&q=80"
-        alt="Paella dish"
+        src={post.image}
+        alt={post.title}
+        onError={(e) => {
+          e.target.src = tempImage;
+        }}
       />
       <CardContent>
         <Typography variant="h6" color="text.secondary">
@@ -50,14 +64,16 @@ const PostItems = ({ post }) => {
           ~{post.user}
         </Typography>
       </CardContent>
-      <CardActions sx={{ ml: "auto" }}>
-        <IconButton>
-          <EditIcon />
-        </IconButton>
-        <IconButton>
-          <DeleteIcon />
-        </IconButton>
-      </CardActions>
+      {isLoggedInUser() && (
+        <CardActions sx={{ ml: "auto" }}>
+          <IconButton LinkComponent={Link}>
+            <EditIcon />
+          </IconButton>
+          <IconButton>
+            <DeleteIcon />
+          </IconButton>
+        </CardActions>
+      )}
     </Card>
   );
 };

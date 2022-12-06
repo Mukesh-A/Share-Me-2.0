@@ -28,6 +28,7 @@ const Auth = () => {
         .then((resData) => localStorage.setItem("userId", resData.id))
         .then(() => {
           dispatch(authActions.login());
+          
         })
         .catch((err) => console.log(err));
     }
