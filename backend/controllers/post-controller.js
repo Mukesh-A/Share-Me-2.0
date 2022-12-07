@@ -4,6 +4,8 @@ import Post from "../models/Post";
 import User from "../models/User";
 
 export const getAllPosts = async (req, res) => {
+  console.log("getAllPosts");
+
   let posts;
   try {
     posts = await Post.find();
@@ -16,6 +18,8 @@ export const getAllPosts = async (req, res) => {
   return res.status(200).json({ posts });
 };
 export const addPost = async (req, res) => {
+  console.log("addPost");
+
   const { title, description, location, date, image, user } = req.body;
 
   if (
@@ -73,7 +77,7 @@ export const addPost = async (req, res) => {
   return res.status(201).json({ post });
 };
 export const getPostById = async (req, res) => {
-  console.log("get");
+  console.log("getPostById");
 
   const id = req.params.id;
   let post;
@@ -88,9 +92,9 @@ export const getPostById = async (req, res) => {
   return res.status(200).json({ post });
 };
 export const updatePost = async (req, res) => {
-  console.log("update");
+  console.log("updatePost");
   const id = req.params.id;
-  const { title, description, location, date, image } = req.body;
+  const { title, description, location, image } = req.body;
 
   if (
     !title &&
@@ -99,7 +103,7 @@ export const updatePost = async (req, res) => {
     description.trim() === "" &&
     !location &&
     location.trim() === "" &&
-    !date &&
+   
     !image &&
     image.trim() === ""
   ) {
@@ -114,7 +118,6 @@ export const updatePost = async (req, res) => {
       description,
       image,
       location,
-      date: new Date(`${date}`),
     });
   } catch (error) {
     console.log(error);
@@ -125,6 +128,8 @@ export const updatePost = async (req, res) => {
   return res.status(201).json({ message: "updated success", post });
 };
 export const deleteUser = async (req, res, next) => {
+  console.log("deleteUser");
+
   const id = req.params.id;
   let post;
   try {

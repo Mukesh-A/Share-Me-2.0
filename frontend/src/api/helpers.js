@@ -40,3 +40,28 @@ export const addPost = async (data) => {
   const resData = await res.data;
   return resData;
 };
+export const getPostDetails = async (id) => {
+  const res = await axios.get(`/posts/${id}`).catch((err) => console.log(err));
+  if (res.status !== 200) {
+    return console.log("unable to fetch post");
+  }
+  const resData = await res.data;
+  return resData;
+};
+export const updatePostDetails = async (id, data) => {
+  const res = await axios
+    .put(`/posts/${id}`, {
+      title: data.title,
+      description: data.description,
+      location: data.location,
+      image: data.image,
+    })
+    .catch((err) => console.log(err));
+
+  if (res.status !== 201) {
+    return console.log("error occurred");
+  }
+
+  const resData = await res.data;
+  return resData;
+};

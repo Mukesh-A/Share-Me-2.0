@@ -5,6 +5,7 @@ import Header from "./header/Header";
 import Home from "./home/Home";
 import Add from "./posts/Add";
 import Posts from "./posts/Posts";
+import PostUpdate from "./posts/PostUpdate";
 import Profile from "./profile/Profile";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/auth" element={<Auth />} />
           <Route path="/add" element={<Add />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/post/:id" element={<PostUpdate />} />
         </Routes>
       </section>
     </div>
