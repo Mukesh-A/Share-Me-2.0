@@ -10,6 +10,7 @@ const Add = () => {
     imageUrl: "",
     date: "",
   });
+ 
   const handelSubmit = (e) => {
     e.preventDefault();
     console.log(inputs);

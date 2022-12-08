@@ -18,17 +18,22 @@ const Auth = () => {
     if (isSignup) {
       console.log("signup");
       sendAuthRequest(true, inputs)
-        .then((resData) => localStorage.setItem("userId", resData.user._id))
+        .then((resData) => {
+          localStorage.setItem("userId", resData.user._id);
+          console.log(resData);
+        })
         .then(() => {
           dispatch(authActions.login());
         })
         .catch((err) => console.log(err));
     } else {
       sendAuthRequest(false, inputs)
-        .then((resData) => localStorage.setItem("userId", resData.id))
+        .then((resData) => {
+          localStorage.setItem("userId", resData.id);
+          console.log(resData);
+        })
         .then(() => {
           dispatch(authActions.login());
-          
         })
         .catch((err) => console.log(err));
     }

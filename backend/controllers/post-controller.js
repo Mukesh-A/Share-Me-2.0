@@ -8,7 +8,7 @@ export const getAllPosts = async (req, res) => {
 
   let posts;
   try {
-    posts = await Post.find();
+    posts = await Post.find().populate("user", "name");
   } catch (error) {
     return console.log(error);
   }
@@ -103,7 +103,6 @@ export const updatePost = async (req, res) => {
     description.trim() === "" &&
     !location &&
     location.trim() === "" &&
-   
     !image &&
     image.trim() === ""
   ) {

@@ -11,7 +11,6 @@ const PostUpdate = () => {
     description: "",
     location: "",
     image: "",
-
   });
   useEffect(() => {
     getPostDetails(id)
@@ -25,7 +24,7 @@ const PostUpdate = () => {
   const handelSubmit = (e) => {
     e.preventDefault();
     console.log(inputs);
-    updatePostDetails(id,inputs)
+    updatePostDetails(id, inputs)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
