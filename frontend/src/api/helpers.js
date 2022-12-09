@@ -83,6 +83,6 @@ export const getUserDetails = async () => {
   if (res.status !== 200) {
     return console.log("No user found");
   }
-  const resData = await res.data;
+  const resData = await res.data.user;
   return resData;
 };

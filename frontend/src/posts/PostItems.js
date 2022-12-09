@@ -43,7 +43,7 @@ const PostItems = ({ post }) => {
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
-            R
+            {user.name.charAt(0)}
           </Avatar>
         }
         action={

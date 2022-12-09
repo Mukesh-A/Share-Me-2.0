@@ -1,8 +1,11 @@
 import { Box, Button, FormLabel, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { addPost } from "../api/helpers";
 
 const Add = () => {
+  const navigate = useNavigate();
+
   const [inputs, setInputs] = useState({
     title: "",
     description: "",
@@ -10,12 +13,15 @@ const Add = () => {
     imageUrl: "",
     date: "",
   });
- 
+  const onResReceived = (data) => {
+    console.log(data)
+    navigate("/posts")
+  };
   const handelSubmit = (e) => {
     e.preventDefault();
     console.log(inputs);
     addPost(inputs)
-      .then((res) => console.log(res))
+      .then(onResReceived)
       .catch((err) => console.log(err));
   };
   const handelChange = (e) => {

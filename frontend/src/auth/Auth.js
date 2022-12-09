@@ -1,14 +1,26 @@
 import { Box, Button, FormLabel, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { sendAuthRequest } from "../api/helpers";
 import { authActions } from "../store";
 
 const Auth = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [isSignup, setIsSignup] = useState(true);
   const [inputs, setInputs] = useState({ name: "", email: "", password: "" });
+  const onResReceived = (data) => {
+    console.log(data);
+    if (isSignup) {
+      localStorage.setItem("userId", data.user._id);
+    } else {
+      localStorage.setItem("userId", data.id);
+    }
+    dispatch(authActions.login());
+    navigate("/posts");
+  };
   const handelChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -18,23 +30,11 @@ const Auth = () => {
     if (isSignup) {
       console.log("signup");
       sendAuthRequest(true, inputs)
-        .then((resData) => {
-          localStorage.setItem("userId", resData.user._id);
-          console.log(resData);
-        })
-        .then(() => {
-          dispatch(authActions.login());
-        })
+        .then(onResReceived)
         .catch((err) => console.log(err));
     } else {
       sendAuthRequest(false, inputs)
-        .then((resData) => {
-          localStorage.setItem("userId", resData.id);
-          console.log(resData);
-        })
-        .then(() => {
-          dispatch(authActions.login());
-        })
+        .then(onResReceived)
         .catch((err) => console.log(err));
     }
   };
