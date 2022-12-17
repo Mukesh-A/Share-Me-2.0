@@ -1,41 +1,58 @@
 import { Box, Button, Typography } from "@mui/material";
 import React from "react";
+import CenterFocusStrongIcon from "@mui/icons-material/CenterFocusStrong";
+
 import { Link } from "react-router-dom";
 const Home = () => {
   return (
-    <Box position={"relative"} width="100%" height="91vh">
-      <img src="/home.jpg" alt="post" width="100%" height="100%" />
-      <Typography
-        fontSize={"4.5rem"}
-        textAlign={"left"}
-        fontWeight={"bold"}
-        fontFamily={"Dancing Script, cursive"}
-        sx={{
-          position: "absolute",
-          top: "0rem",
-          padding: "8rem",
-          background: "-webkit-linear-gradient(45deg, gray 30%, #575A5F  90%)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-        }}
+    <Box
+      position={"relative"}
+      width="100%"
+      height="91vh"
+      backgroundColor="#000000"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      flexDirection="column"
+    >
+      <Box
+        position={"relative"}
+        width="100%"
+        // height="91vh"
+        backgroundColor="#000000"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
       >
-        Little Moments
-        <br />
-        Make Big <br /> Memories
-        <br />
-      </Typography>
+        <CenterFocusStrongIcon sx={{ color: "#0D80D8", fontSize: "5rem" }} />
+        <Typography fontSize={"2.5rem"} color="#657786">
+          Capture
+        </Typography>
+        {/* <img src="/home.jpg" alt="post" width="100%" height="100%" />*/}
+      </Box>
       <Box
         width="100%"
-        position={"absolute"}
-        bottom={"0px"}
+        // position={"absolute"}
+        // bottom={"0px"}
         display={"flex"}
         flexDirection="column"
       >
-        <Typography textAlign={"center"} color="gray" variant="h4" padding={2}>
-          Share Your Memories
+        <Typography
+          textAlign={"center"}
+          color="#657786"
+          variant="h5"
+          padding={2}
+        >
+          Little Moments Make Big Memories
         </Typography>
         <Box margin="auto">
-          <Button variant="outlined" sx={{ mb: 5 }}>
+          <Button
+            variant="outlined"
+            LinkComponent={Link}
+            to="/auth"
+            // variant="contained"
+            sx={{ ml: 3, mb: 5 }}
+          >
             Create Memories
           </Button>
           <Button

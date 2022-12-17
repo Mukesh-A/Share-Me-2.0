@@ -41,68 +41,98 @@ const Auth = () => {
 
   return (
     <Box
-      width="40%"
-      borderRadius={10}
-      boxShadow={"5px 5px 10px #ccc"}
-      margin="auto"
-      marginTop={10}
+      width="100%"
+      height="90vh"
+      backgroundColor="#000000"
+      display="flex"
+      justifyContent={"center"}
+      alignItems={"center"}
     >
-      <form onSubmit={handelSubmit}>
-        <Box
-          display={"flex"}
-          flexDirection={"column"}
-          width={"60%"}
-          padding={5}
-          margin="auto"
-        >
-          <Typography variant="h4" textAlign={"center"}>
-            {!isSignup ? "LOGIN" : "SIGNUP"}
-          </Typography>
-          {isSignup && (
-            <>
-              <FormLabel>Name</FormLabel>
-              <TextField
-                onChange={handelChange}
-                value={inputs.name}
-                name="name"
-                required
-                margin="normal"
-              />
-            </>
-          )}
-          <FormLabel>Email</FormLabel>
-          <TextField
-            onChange={handelChange}
-            value={inputs.email}
-            name="email"
-            required
-            margin="normal"
-          />
-          <FormLabel>Password</FormLabel>
-          <TextField
-            onChange={handelChange}
-            value={inputs.password}
-            name="password"
-            required
-            margin="normal"
-          />
-          <Button
-            // onClick={() => setIsSignup(!isSignup)}
-            type="submit"
-            variant="contained"
-            sx={{ mt: 1, borderRadius: 5 }}
+      <Box
+        width="40%"
+        borderRadius={10}
+        boxShadow=" rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
+      >
+        <form onSubmit={handelSubmit}>
+          <Box
+            display={"flex"}
+            flexDirection={"column"}
+            width={"60%"}
+            padding={5}
+            margin="auto"
+            color="#D6D9DB"
           >
-            {isSignup ? "Create Account" : "Login"}
-          </Button>
-          <Button
-            onClick={() => setIsSignup(!isSignup)}
-            variant="outlined"
-            sx={{ mt: 1, borderRadius: 5 }}
-          >
-            {isSignup ? "Login" : "Create Account"}
-          </Button>
-        </Box>
-      </form>
+            <Typography color="#D6D9DB" variant="h4" textAlign={"center"}>
+              {!isSignup ? "LOGIN" : "SIGNUP"}
+            </Typography>
+            {isSignup && (
+              <>
+                <FormLabel sx={{ color: "#AAB8C2" }}>Name</FormLabel>
+                <TextField
+                  sx={{
+                    input: {
+                      color: "#AAB8C2",
+                      border: "1px solid #657786",
+                      borderRadius: ".5rem",
+                    },
+                  }}
+                  onChange={handelChange}
+                  value={inputs.name}
+                  name="name"
+                  required
+                  margin="normal"
+                  border="1px solid red"
+                />
+              </>
+            )}
+            <FormLabel sx={{ color: "#AAB8C2" }}>Email</FormLabel>
+            <TextField
+              sx={{
+                input: {
+                  color: "#AAB8C2",
+                  border: "1px solid #657786",
+                  borderRadius: ".5rem",
+                },
+              }}
+              onChange={handelChange}
+              value={inputs.email}
+              name="email"
+              required
+              margin="normal"
+            />
+            <FormLabel sx={{ color: "#AAB8C2" }}>Password</FormLabel>
+            <TextField
+            sx={{
+              input: {
+                color: "#AAB8C2",
+                border: "1px solid #657786",
+                borderRadius: ".5rem",
+              },
+            }}
+              onChange={handelChange}
+              value={inputs.password}
+              name="password"
+              required
+              margin="normal"
+            />
+            <Button
+              // onClick={() => setIsSignup(!isSignup)}
+              type="submit"
+              variant="contained"
+              sx={{ mt: 1, borderRadius: 2 }}
+            >
+              {isSignup ? "Create Account" : "Login"}
+            </Button>
+            <Button
+              onClick={() => setIsSignup(!isSignup)}
+              variant="outlined"
+              sx={{ mt: 1, borderRadius: 2 }}
+            >
+              {isSignup ? "Login" : "Create Account"}
+            </Button>
+          </Box>
+        </form>
+      </Box>
     </Box>
   );
 };

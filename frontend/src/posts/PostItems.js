@@ -22,6 +22,7 @@ const PostItems = ({ post }) => {
   const { _id, title, description, image, location, date, user } = post.post;
   const [open, setOpen] = useState(false);
 
+  console.log(post);
   // useEffect(()=>{
   //   console.log("refreshed");
   // },[post])
@@ -38,12 +39,15 @@ const PostItems = ({ post }) => {
       .catch((err) => console.log(err));
     setOpen(true);
   };
+  // const name = ;/
   return (
-    <Card sx={{ width: 345, m: 2 }}>
+    <Card sx={{ width: 345, m: 2, bgcolor: "#14171A" }}>
       <CardHeader
+        // subheaderTypographyProps={{ color: 'white' }}
+        sx={{ color: "#E1E8ED" }}
         avatar={
-          <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
-            {user.name.charAt(0)}
+          <Avatar sx={{ bgcolor: "#657786" }} aria-label="recipe">
+            {/* {user?.name.charAt(0)} */}
           </Avatar>
         }
         action={
@@ -51,8 +55,12 @@ const PostItems = ({ post }) => {
             {/* <MoreVertIcon /> */}
           </IconButton>
         }
-        title={post.location}
-        subheader={new Date(`${date}`).toLocaleDateString()}
+        title={location}
+        subheader={
+          <Typography sx={{ color: "#AAB8C2" }}>
+            {new Date(`${date}`).toLocaleDateString()}
+          </Typography>
+        }
       />
       <img
         height="194"
@@ -64,15 +72,15 @@ const PostItems = ({ post }) => {
         }}
       />
       <CardContent>
-        <Typography variant="h6" color="text.secondary">
+        <Typography variant="h6" color="#F5F8FA">
           {title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="#657786">
           {description}
         </Typography>
         <Typography
           variant="body2"
-          color="text.secondary"
+          color="#657786"
           textAlign={"end"}
           fontStyle="italic"
         >

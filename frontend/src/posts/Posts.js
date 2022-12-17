@@ -16,13 +16,20 @@ const Posts = () => {
   }, []);
   return (
     <Box
-      display="flex"
-      flexDirection={"column"}
-      padding={3}
-      justifyContent="center"
-      alignItems={"center"}
+      display="flex" /* establish flex container */
+      flexDirection="row" /* default value; can be omitted */
+      flexWrap="wrap" /* default value; can be omitted */
+      // justifyContent="space-evenly"
+      // flexDirection={"column"}
+      gap={3}
+      padding={10}
+      // justifyContent="center"
+      alignContent={"center"}
+      backgroundColor="#000000"
+      // width="100%"
     >
-      {posts && posts.map((post) => <PostItems key={post._id} post={{post}} />)}
+      {posts &&
+        posts.map((post) => <PostItems key={post._id} post={{ post }} />)}
     </Box>
   );
 };

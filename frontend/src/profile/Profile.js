@@ -25,31 +25,43 @@ const Profile = () => {
     navigate("/");
   };
   return (
-    <Box display="flex" flexDirection={"column"}>
+    <Box backgroundColor="#000000" display="flex" flexDirection={"column"}>
       {User && (
         <>
-          <Typography textAlign={"center"} variant="h3" padding={2}>
+          {/* <Typography color="#AAB8C2" textAlign={"center"} variant="h3" padding={2}>
             User Profile
-          </Typography>
-          <Typography textAlign={"left"} padding={1}>
-            {User.name}
-          </Typography>
-          <Typography textAlign={"left"} padding={1}>
-            {User.email}
-          </Typography>
-          <Button
-            onClick={handelClick}
-            color="error"
-            variant="contained"
-            sx={{ mr: "auto" }}
-          >
-            Logout
-          </Button>
+          </Typography> */}
           <Box
-            display={"flex"}
-            flexDirection="column"
-            justifyContent={"center"}
-            alignItems="center"
+            sx={{alignSelf: 'flex-end'}}
+            display="flex"
+            flexDirection="row" /* default value; can be omitted */
+          >
+            <Typography color="#AAB8C2" textAlign={"left"} padding={1}>
+              {User.name}
+            </Typography>
+            <Typography color="#AAB8C2" textAlign={"left"} padding={1}>
+              {User.email}
+            </Typography>
+            <Button
+              onClick={handelClick}
+              color="error"
+              variant="contained"
+              sx={{ mr: "auto" }}
+            >
+              Logout
+            </Button>
+          </Box>
+          <Box
+            display="flex" /* establish flex container */
+            flexDirection="row" /* default value; can be omitted */
+            flexWrap="wrap" /* default value; can be omitted */
+            // justifyContent="space-evenly"
+            // flexDirection={"column"}
+            gap={3}
+            padding={10}
+            // justifyContent="center"
+            alignContent={"center"}
+            backgroundColor="#000000"
           >
             {User?.posts.map((post, index) => (
               <PostItems key={post._id} post={{ post }} />
