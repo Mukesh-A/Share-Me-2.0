@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import path from "path";
+
 import userRouter from "./router/user-routes";
 import postRouter from "./router/post-route";
 import cors from "cors";
@@ -26,18 +26,15 @@ mongoose
     }
   )
   .then(() => {
-    app.use(express.static(path.join(__dirname, "../frontend/build")));
-
-    app.get("*", function (_, res) {
-      res.sendFile(
-        path.join(__dirname, "../frontend/build/index.html"),
-        function (err) {
-          if (err) {
-            res.status(500).send(err);
-          }
-        }
-      );
-    });
+    if (process.env.NODE_ENV === "production") {
+      const path = require("path");
+      app.get("/", (req, res) => {
+        app.use(express.static(path.resolve(__dirname, "frontend", "build")));
+        res.sendFile(
+          path.resolve(__dirname, "frontend", "build", "index.html")
+        );
+      });
+    }
 
     app.listen(5000, () =>
       console.log("DB Connection successful and Listening to local host 5000")
