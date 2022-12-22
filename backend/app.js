@@ -18,11 +18,28 @@ app.use("/posts", postRouter);
 //connections to mongoo
 mongoose
   .connect(
-    `mongodb+srv://admin:${process.env.MONGODB_PASSWORD}@cluster0.lq3cjcm.mongodb.net/?retryWrites=true&w=majority`
+    `mongodb+srv://admin:${process.env.MONGODB_PASSWORD}@cluster0.lq3cjcm.mongodb.net/?retryWrites=true&w=majority`,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
   )
   .then(() =>
-    app.listen(5000, () =>
+    app.listen(process.env.PORT || 5000, () =>
       console.log("DB Connection successful and Listening to local host 5000")
     )
   )
   .catch((err) => console.log(err));
+
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+app.get("*", function (_, res) {
+  res.sendFile(
+    path.join(__dirname, "../frontend/build/index.html"),
+    function (err) {
+      if (err) {
+        res.status(500).send(err);
+      }
+    }
+  );
+});
