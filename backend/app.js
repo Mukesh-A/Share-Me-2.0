@@ -31,6 +31,7 @@ mongoose
       app.get("/*", (req, res) => {
         app.use(express.static(path.resolve(__dirname, "frontend", "build")));
         res.sendFile(__dirname + "/frontend/build/index.html");
+        res.send(__dirname + "/frontend/build/index.html")
       });
     }
     // if (process.env.NODE_ENV === "production") {
