@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-
+import path from "path";
 import userRouter from "./router/user-routes";
 import postRouter from "./router/post-route";
 import cors from "cors";
