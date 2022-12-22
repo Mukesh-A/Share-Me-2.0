@@ -8,8 +8,12 @@
         "src": "./frontend/build",    
         "use": "@vercel/static"
       }],
-    "router":[{
-        "src":"/.*",
-        "dest":"./backend/app.js"
-    }]
+    
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/backend/app.js"
+    }
+  ]
+
 }
