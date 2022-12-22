@@ -27,7 +27,7 @@ mongoose
   )
   .then(() => {
     if (process.env.NODE_ENV === "production") {
-      app.use(express.static(path.join(__dirname, "./var/task/frontend/build")));
+      app.use(express.static(path.join(__dirname, "/var/task/frontend/build")));
 
       app.get("*", function (_, res) {
         res.sendFile(
