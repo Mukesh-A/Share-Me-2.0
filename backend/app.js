@@ -12,14 +12,8 @@ dotenv.config();
 //telling the application that we are passing json type data
 app.use(cors());
 app.use(express.json());
-app.use(
-  "/users",
-  require(path.join(__dirname, "api", "router", "user-routes.js"))
-);
-app.use(
-  "/posts",
-  require(path.join(__dirname, "api", "router", "post-route.js"))
-);
+app.use("/users", userRouter);
+app.use("/posts", postRouter);
 
 //connections to mongoo
 mongoose
@@ -37,15 +31,10 @@ mongoose
   )
   .catch((err) => console.log(err));
 
-  app.use(express.static(path.join(__dirname, "../frontend/build")));
-
-  app.get("*", function(_, res) {
-      res.sendFile(
-          path.join(__dirname, "../frontend/build/index.html"),
-          function (err) {
-              if(err) {
-                  res.status(500).send(err)
-              }
-          }
-      )
-  })
+// // static files (build of your frontend)
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname, "../frontend", "build")));
+//   app.get("/*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "../frontend", "build", "index.html"));
+//   });
+// }
