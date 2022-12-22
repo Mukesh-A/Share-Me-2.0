@@ -8,7 +8,7 @@
         "src": "./frontend/build",    
         "use": "@vercel/static"
       }],
-    "router":[{
+    "routes":[{
         "src":"/.*",
         "dest":"/backend/app.js"
     }]
