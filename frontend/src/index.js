@@ -10,7 +10,7 @@ import { store } from "./store";
 axios.defaults.baseURL = "http://localhost:5000";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter basename='/'>
+  <BrowserRouter >
     <Provider store={store}>
       <App />
     </Provider>
