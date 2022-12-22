@@ -31,7 +31,14 @@ mongoose
       app.get("/*", (req, res) => {
         app.use(express.static(path.resolve(__dirname, "frontend", "build")));
         res.sendFile(
-          path.resolve(__dirname, "frontend", "build", "index.html")
+          path.resolve(
+            __dirname,
+            "var",
+            "task",
+            "frontend",
+            "build",
+            "index.html"
+          )
         );
       });
     }
