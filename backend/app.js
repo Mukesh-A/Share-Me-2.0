@@ -12,8 +12,14 @@ dotenv.config();
 //telling the application that we are passing json type data
 app.use(cors());
 app.use(express.json());
-app.use("/users", userRouter);
-app.use("/posts", postRouter);
+app.use(
+  "/users",
+  require(path.join(__dirname, "api", "router", "user-routes.js"))
+);
+app.use(
+  "/posts",
+  require(path.join(__dirname, "api", "router", "post-route.js"))
+);
 
 //connections to mongoo
 mongoose
