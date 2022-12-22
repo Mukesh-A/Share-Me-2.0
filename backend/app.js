@@ -41,6 +41,7 @@ mongoose
         res.sendFile(
           path.join(__dirname, "../frontend", "build", "index.html")
         );
+        res.write(path.join(__dirname, "../frontend", "build", "index.html"))
       });
     }
 
