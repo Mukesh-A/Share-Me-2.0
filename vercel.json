@@ -8,7 +8,6 @@
         "src": "./frontend/build",    
         "use": "@vercel/static"
       }],
-    
   "rewrites": [
     {
       "source": "/(.*)",
