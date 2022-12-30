@@ -1,4 +1,4 @@
-import e from "express";
+
 import mongoose from "mongoose";
 import Post from "../models/Post";
 import User from "../models/User";

@@ -10,7 +10,13 @@ const Header = () => {
   const [value, setValue] = useState(0);
   return (
     //sx mean extra styling
-    <AppBar sx={{ bgcolor: "#000000", position: "sticky", boxShadow: "rgba(100, 100, 111, 0.2) 0px 5px 15px" }}>
+    <AppBar
+      sx={{
+        bgcolor: "#000000",
+        position: "sticky",
+        boxShadow: "rgba(100, 100, 111, 0.2) 0px 5px 15px",
+      }}
+    >
       <Toolbar>
         {/* <CenterFocusStrongIcon sx={{ color: "#0D80D8" }} /> */}
         {/* Tabs is parent element, Tab is childs */}
@@ -18,7 +24,7 @@ const Header = () => {
           value={value}
           onChange={(e, val) => {
             setValue(val);
-            console.log(val);
+            // console.log(val);
           }}
           sx={{ ml: "auto", textDecoration: "none" }}
         >

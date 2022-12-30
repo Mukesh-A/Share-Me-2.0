@@ -7,7 +7,7 @@ import axios from "axios";
 import { Provider } from "react-redux";
 import { store } from "./store";
 //baseurl
-axios.defaults.baseURL = "https://share-me-ten.vercel.app";
+axios.defaults.baseURL = process.env.REACT_APP_URL;
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>

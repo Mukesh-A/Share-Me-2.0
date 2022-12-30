@@ -25,36 +25,37 @@ mongoose
       useUnifiedTopology: true,
     }
   )
-  .then(() => {
-    if (process.env.NODE_ENV === "production") {
-      app.use(express.static(path.join(__dirname, "./frontend/build")));
-
-      app.get("/*", function (_, res) {
-        res.sendFile(
-          path.join(__dirname, "./frontend/build/index.html"),
-          function (err) {
-            if (err) {
-              res.status(500).send(err);
-            }
-          }
-        );
-        // res.send(__dirname, "../../frontend/build/index.html")
-      });
-    }
-    // if (process.env.NODE_ENV === "production") {
-    //   app.use(express.static(path.join(__dirname, "frontend", "build")));
-    //   app.get("/", (req, res) => {
-    //     res.sendFile(
-    //       path.join(__dirname, "frontend", "build", "index.html")
-    //     );
-    //     res.send(__dirname, "frontend", "build", "index.html")
-    //   });
-    // }
-
+  .then(
     app.listen(5000, () =>
       console.log("DB Connection successful and Listening to local host 5000")
-    );
-  })
+    )
+  )
+  // () => {
+  // if (process.env.NODE_ENV === "production") {
+  //   app.use(express.static(path.join(__dirname, "./frontend/build")));
+
+  //   app.get("/*", function (_, res) {
+  //     res.sendFile(
+  //       path.join(__dirname, "./frontend/build/index.html"),
+  //       function (err) {
+  //         if (err) {
+  //           res.status(500).send(err);
+  //         }
+  //       }
+  //     );
+  //     // res.send(__dirname, "../../frontend/build/index.html")
+  //   });
+  // }
+  // if (process.env.NODE_ENV === "production") {
+  //   app.use(express.static(path.join(__dirname, "frontend", "build")));
+  //   app.get("/", (req, res) => {
+  //     res.sendFile(
+  //       path.join(__dirname, "frontend", "build", "index.html")
+  //     );
+  //     res.send(__dirname, "frontend", "build", "index.html")
+  //   });
+  // }
+
   .catch((err) => console.log(err));
 
 // app.use('/some-route', require(path.join(__dirname, 'fr', 'routes', 'route.js')));

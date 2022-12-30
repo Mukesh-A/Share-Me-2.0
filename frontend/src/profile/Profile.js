@@ -15,7 +15,7 @@ const Profile = () => {
     getUserDetails()
       .then((data) => {
         setUser(data);
-        console.log(data);
+        // console.log(data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -25,15 +25,20 @@ const Profile = () => {
     navigate("/");
   };
   return (
-    <Box backgroundColor="#000000" display="flex" flexDirection={"column"}>
+    <Box
+      backgroundColor="#000000"
+      display="flex"
+      flexDirection={"column"}
+      height="100vh"
+      // border={"1px solid red"}
+    >
       {User && (
         <>
-          {/* <Typography color="#AAB8C2" textAlign={"center"} variant="h3" padding={2}>
-            User Profile
-          </Typography> */}
+          
           <Box
-            sx={{alignSelf: 'flex-end'}}
+            sx={{ alignSelf: "flex-end" }}
             display="flex"
+            margin="auto"
             flexDirection="row" /* default value; can be omitted */
           >
             <Typography color="#AAB8C2" textAlign={"left"} padding={1}>
@@ -46,7 +51,7 @@ const Profile = () => {
               onClick={handelClick}
               color="error"
               variant="contained"
-              sx={{ mr: "auto" }}
+              sx={{ m: "auto", height: "2rem", borderRadius: "2rem" }}
             >
               Logout
             </Button>
@@ -58,13 +63,13 @@ const Profile = () => {
             // justifyContent="space-evenly"
             // flexDirection={"column"}
             gap={3}
-            padding={10}
+            padding={1}
             // justifyContent="center"
             alignContent={"center"}
             backgroundColor="#000000"
           >
-            {User?.posts.map((post, index) => (
-              <PostItems key={post._id} post={{ post }} />
+            {User.posts.map((post, index) => (
+              <PostItems key={post._id} post={{ post }} username={User.name} />
             ))}
           </Box>
         </>

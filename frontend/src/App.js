@@ -15,18 +15,33 @@ function App() {
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
   console.log(isLoggedIn);
 
+  // const styles = theme => ({
+  //   '@global': {
+  //     '*::-webkit-scrollbar': {
+  //       width: '0.4em'
+  //     },
+  //     '*::-webkit-scrollbar-track': {
+  //       '-webkit-box-shadow': 'inset 0 0 6px rgba(0,0,0,0.00)'
+  //     },
+  //     '*::-webkit-scrollbar-thumb': {
+  //       backgroundColor: 'rgba(0,0,0,.1)',
+  //       outline: '1px solid slategrey'
+  //     }
+  //   }
+  // });
+
   useEffect(() => {
     if (localStorage.getItem("userId")) {
       dispatch(authActions.login());
     }
   }, [localStorage]);
   return (
-    <div>
+    <div >
       <header>
         <Header />
       </header>
 
-      <section>
+      <section >
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/posts" element={<Posts />} />

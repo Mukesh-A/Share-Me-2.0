@@ -1,14 +1,20 @@
 import { Box, Button, Typography } from "@mui/material";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { authActions } from "../store";
 import CenterFocusStrongIcon from "@mui/icons-material/CenterFocusStrong";
 
 import { Link } from "react-router-dom";
 const Home = () => {
+  const dispatch = useDispatch();
+  const Auth = () => {
+    dispatch(authActions.nav("auth"));
+  };
   return (
     <Box
       position={"relative"}
       width="100%"
-      height="91vh"
+      height="100vh"
       backgroundColor="#000000"
       display="flex"
       justifyContent="center"
@@ -36,6 +42,8 @@ const Home = () => {
         // bottom={"0px"}
         display={"flex"}
         flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
       >
         <Typography
           textAlign={"center"}
@@ -47,11 +55,12 @@ const Home = () => {
         </Typography>
         <Box margin="auto">
           <Button
+            onClick={() => Auth}
             variant="outlined"
             LinkComponent={Link}
             to="/auth"
             // variant="contained"
-            sx={{ ml: 3, mb: 5 }}
+            sx={{ m: "auto", mb: 5 }}
           >
             Create Memories
           </Button>

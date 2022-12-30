@@ -32,8 +32,8 @@ const Add = () => {
   };
   return (
     <Box
-      width={"100vw"}
-      height={"100%"}
+      // width={"100%"}
+      height={"100vh"}
       display="flex"
       backgroundColor="#000000"
       flexDirection={"column"}
@@ -48,9 +48,9 @@ const Add = () => {
       >
         Add Your Memories
       </Typography>
-      <form   onSubmit={handelSubmit}>
+      <form onSubmit={handelSubmit}>
         <Box
-          width={"100%"}
+          height={"auto"}
           // border={"1px solid grey"}
           padding={5}
           display="flex"
@@ -58,7 +58,7 @@ const Add = () => {
           // flexWrap={"wrap"}
           flexDirection={"column"}
         >
-          <FormLabel sx={{ fontFamily: "quicksand", color: "#AAB8C2" }}>
+          <FormLabel sx={{ fontFamily: "quicksand", color: "#AAB8C2", mt: 1 }}>
             Title
           </FormLabel>
           <TextField
@@ -72,73 +72,84 @@ const Add = () => {
             onChange={handelChange}
             name="title"
             value={inputs.title}
-            margin="normal"
+            required
+            // margin="normal"
           />
-          <FormLabel sx={{ fontFamily: "quicksand", color: "#AAB8C2" }}>
+          <FormLabel sx={{ fontFamily: "quicksand", color: "#AAB8C2", mt: 1 }}>
             Description
           </FormLabel>
           <TextField
-          sx={{
-            input: {
-              color: "#AAB8C2",
-              border: "1px solid #657786",
-              borderRadius: ".5rem",
-            },
-          }}
+            sx={{
+              input: {
+                color: "#AAB8C2",
+                border: "1px solid #657786",
+                borderRadius: ".5rem",
+              },
+            }}
             onChange={handelChange}
             name="description"
             value={inputs.description}
-            margin="normal"
+            required
+            // margin="normal"
           />
-          <FormLabel sx={{ fontFamily: "quicksand", color: "#AAB8C2" }}>
+          <FormLabel sx={{ fontFamily: "quicksand", color: "#AAB8C2", mt: 1 }}>
             Image Url
           </FormLabel>
           <TextField
-          sx={{
-            input: {
-              color: "#AAB8C2",
-              border: "1px solid #657786",
-              borderRadius: ".5rem",
-            },
-          }}
+            sx={{
+              input: {
+                color: "#AAB8C2",
+                border: "1px solid #657786",
+                borderRadius: ".5rem",
+              },
+            }}
             onChange={handelChange}
             name="imageUrl"
             value={inputs.imageUrl}
-            margin="normal"
+            required
+            // margin="normal"
           />
-          <FormLabel sx={{ fontFamily: "quicksand", color: "#AAB8C2" }}>
+          <FormLabel sx={{ fontFamily: "quicksand", color: "#AAB8C2", mt: 1 }}>
             Location
           </FormLabel>
           <TextField
-          sx={{
-            input: {
-              color: "#AAB8C2",
-              border: "1px solid #657786",
-              borderRadius: ".5rem",
-            },
-          }}
+            sx={{
+              input: {
+                color: "#AAB8C2",
+                border: "1px solid #657786",
+                borderRadius: ".5rem",
+              },
+            }}
             onChange={handelChange}
             name="location"
             value={inputs.location}
-            margin="normal"
+            required
+            // margin="normal"
           />
-          <FormLabel sx={{ fontFamily: "quicksand", color: "#D6D9DB" }}>
+          <FormLabel sx={{ fontFamily: "quicksand", color: "#D6D9DB", mt: 1 }}>
             Date
           </FormLabel>
           <TextField
-          sx={{
-            input: {
-              color: "#AAB8C2",
-              border: "1px solid #657786",
-              borderRadius: ".5rem",
-            },
-          }}
+            sx={{
+              input: {
+                color: "#AAB8C2",
+                border: "1px solid #657786",
+                borderRadius: ".5rem",
+              },
+            }}
             onChange={handelChange}
             name="date"
+            type="date"
             value={inputs.date}
-            margin="normal"
+            required
+            // margin="normal"
           />
-          <Button type="submit" padding={"5px"} variant="contained">
+          <Button
+            type="submit"
+            sx={{ mt: 2 }}
+            padding={"5px"}
+            variant="contained"
+          >
             Post
           </Button>
         </Box>

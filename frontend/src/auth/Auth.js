@@ -42,23 +42,23 @@ const Auth = () => {
   return (
     <Box
       width="100%"
-      height="90vh"
+      height="100vh"
       backgroundColor="#000000"
       display="flex"
       justifyContent={"center"}
       alignItems={"center"}
     >
       <Box
-        width="40%"
         borderRadius={10}
+        width={"30rem"}
         boxShadow=" rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
       >
         <form onSubmit={handelSubmit}>
           <Box
             display={"flex"}
             flexDirection={"column"}
-            width={"60%"}
-            padding={5}
+            // width={"60%"}
+            padding={4}
             margin="auto"
             color="#D6D9DB"
           >
@@ -67,7 +67,7 @@ const Auth = () => {
             </Typography>
             {isSignup && (
               <>
-                <FormLabel sx={{ color: "#AAB8C2" }}>Name</FormLabel>
+                <FormLabel sx={{ color: "#AAB8C2", mt: 2 }}>Name</FormLabel>
                 <TextField
                   sx={{
                     input: {
@@ -80,12 +80,13 @@ const Auth = () => {
                   value={inputs.name}
                   name="name"
                   required
-                  margin="normal"
-                  border="1px solid red"
+                  // margin="normal"
+                  placeholder="Enter Your name"
+                  // border="1px solid red"
                 />
               </>
             )}
-            <FormLabel sx={{ color: "#AAB8C2" }}>Email</FormLabel>
+            <FormLabel sx={{ color: "#AAB8C2", mt: 2 }}>Email</FormLabel>
             <TextField
               sx={{
                 input: {
@@ -98,28 +99,30 @@ const Auth = () => {
               value={inputs.email}
               name="email"
               required
-              margin="normal"
+              // margin="normal"
+              placeholder="Enter Your email"
             />
-            <FormLabel sx={{ color: "#AAB8C2" }}>Password</FormLabel>
+            <FormLabel sx={{ color: "#AAB8C2", mt: 2 }}>Password</FormLabel>
             <TextField
-            sx={{
-              input: {
-                color: "#AAB8C2",
-                border: "1px solid #657786",
-                borderRadius: ".5rem",
-              },
-            }}
+              sx={{
+                input: {
+                  color: "#AAB8C2",
+                  border: "1px solid #657786",
+                  borderRadius: ".5rem",
+                },
+              }}
               onChange={handelChange}
               value={inputs.password}
               name="password"
               required
-              margin="normal"
+              placeholder="Enter Your Password"
+
             />
             <Button
               // onClick={() => setIsSignup(!isSignup)}
               type="submit"
               variant="contained"
-              sx={{ mt: 1, borderRadius: 2 }}
+              sx={{ mt: 2, borderRadius: 2 }}
             >
               {isSignup ? "Create Account" : "Login"}
             </Button>
