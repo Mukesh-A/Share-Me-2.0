@@ -25,36 +25,7 @@ mongoose
       useUnifiedTopology: true,
     }
   )
-<<<<<<< HEAD
   .then(
-=======
-  .then(() => {
-    if (process.env.NODE_ENV === "production") {
-      app.use(express.static(path.join(__dirname, "./frontend/build")));
-
-      app.get("*", function (_, res) {
-        res.sendFile(
-          path.join(__dirname, "./frontend/build/index.html"),
-          function (err) {
-            if (err) {
-              res.status(500).send(err);
-            }
-          }
-        );
-        // res.send(__dirname, "../../frontend/build/index.html")
-      });
-    }
-    // if (process.env.NODE_ENV === "production") {
-    //   app.use(express.static(path.join(__dirname, "frontend", "build")));
-    //   app.get("/", (req, res) => {
-    //     res.sendFile(
-    //       path.join(__dirname, "frontend", "build", "index.html")
-    //     );
-    //     res.send(__dirname, "frontend", "build", "index.html")
-    //   });
-    // }
-
->>>>>>> 65938b4629cdff306d7afbfb94e91b0bc754dc6e
     app.listen(5000, () =>
       console.log("DB Connection successful and Listening to local host 5000")
     )
