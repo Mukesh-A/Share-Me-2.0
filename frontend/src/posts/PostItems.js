@@ -43,7 +43,7 @@ const PostItems = ({ post, username }) => {
   });
   // const name = ;/
   return (
-    <Card sx={{ width: 345, height: 420, m: 2, bgcolor: "#14171A" }}>
+    <Card sx={{ width: 345, height: 470, m: "auto", bgcolor: "#14171A" }}>
       <CardHeader
         // subheaderTypographyProps={{ color: 'white' }}
         sx={{ color: "#E1E8ED" }}
@@ -88,7 +88,7 @@ const PostItems = ({ post, username }) => {
         <Typography
           variant="body2"
           color="#657786"
-          sx={{ maxHeight: 100, overflowY: "scroll" }}
+          sx={{ maxHeight: 80, overflowY: "scroll" }}
         >
           {description}
         </Typography>
@@ -114,11 +114,12 @@ const PostItems = ({ post, username }) => {
         <Typography
           variant="body2"
           color="#657786"
+          
           paddingRight={".2rem"}
-          textAlign={"end"}
+          // textAlign={"end"}
           fontStyle="italic"
         >
-          ~{username ? username :user.name}
+          ~{username ? username : user.name}
         </Typography>
       </Box>
 
